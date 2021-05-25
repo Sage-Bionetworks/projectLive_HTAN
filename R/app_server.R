@@ -33,7 +33,7 @@ app_server <- function(input, output,session) {
       mod_about_page_server, 
       "about_page_ui_1", 
       syn, 
-      data_config
+      config
     )
     
     projectlive.modules::summary_snapshot_module_server(
@@ -43,22 +43,7 @@ app_server <- function(input, output,session) {
         jsonlite::read_json("inst/summary_snapshot_module.json")
       )
     )
-    
-    projectlive.modules::publication_status_module_server(
-      id = "publication_status_ui_1",
-      data = data,
-      config = shiny::reactive(
-        jsonlite::read_json("inst/publication_status_module.json")
-      )
-    )
-    
-    projectlive.modules::study_summary_module_server(
-      id = "study_summary_ui_1",
-      data = data,
-      config = shiny::reactive(
-        jsonlite::read_json("inst/study_summary_module.json")
-      )
-    )
+  
     
   })
 }

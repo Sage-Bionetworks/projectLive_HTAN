@@ -21,18 +21,6 @@ mod_about_page_ui <- function(id){
       shinydashboard::dashboardSidebar(disable = T),
       shinydashboard::dashboardBody(
         shiny::fluidPage(
-          #add analytics
-          #         tags$head(includeScript("<!-- Global site tag (gtag.js) - Google Analytics -->
-          # <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-160814003-1\"></script>
-          # <script>
-          #   window.dataLayer = window.dataLayer || [];
-          #   function gtag(){dataLayer.push(arguments);}
-          #   gtag('js', new Date());
-          # 
-          #   gtag('config', 'UA-160814003-1');
-          # </script>
-          # "),
-          #includeScript("www/google_analytics.js")),
           shinydashboard::infoBoxOutput(ns('about'), width = 12),
           shinydashboard::box(
             title = "Funding Partner",
@@ -66,7 +54,7 @@ mod_about_page_server <- function(input, output, session, syn, data_config){
       " ",
       print("projectLive: Track the progress and impact of your funding initiatives in real time"),
       icon = shiny::icon("university", "fa-1x"),
-      color = "light-blue", #Valid colors are: red, yellow, aqua, blue, light-blue, green, navy, teal, olive, lime, orange, fuchsia, purple, maroon, black.
+      color = "light-blue",
       fill = TRUE
     )
   })
@@ -82,17 +70,9 @@ mod_about_page_server <- function(input, output, session, syn, data_config){
     tables <- data_config %>%
       purrr::pluck("data_files") %>%
       purrr::map_chr("synapse_id") %>%
-      purrr::map(read_rds_file_from_synapse, syn) %>%
-      purrr::map(format_date_columns)
+      purrr::map(read_rds_file_from_synapse, syn)
     list(
       "tables" = tables
     ) 
   })
 }
-    
-## To be copied in the UI
-# mod_about_page_ui("about_page_ui_1")
-    
-## To be copied in the server
-# callModule(mod_about_page_server, "about_page_ui_1")
- 

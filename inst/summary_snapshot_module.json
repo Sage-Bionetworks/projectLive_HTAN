@@ -2,27 +2,27 @@
   "header_text": "Please hover your cursor over the plots to view more information. You can also zoom into parts of the plot.",
   "overview_boxes": {
     "box1": {
-      "title": "Studies",
-      "table": "studies",
-      "columns": ["grantId"],
-      "icon": "university"
-    },
-    "box2": {
       "title": "Files",
       "table": "files",
       "columns": ["id"],
       "icon": "file"
     },
+    "box2": {
+      "title": "Benefactors",
+      "table": "files",
+      "columns": ["benefactorId"],
+      "icon": "university"
+    },
     "box3": {
-      "title": "Datasets",
-      "table": "datasets",
-      "columns": ["datasetId"],
+      "title": "File Formats",
+      "table": "files",
+      "columns": ["fileFormat"],
       "icon": "file"
     },
     "box4": {
-      "title": "Publications",
-      "table": "publications",
-      "columns": ["publicationId"],
+      "title": "Components",
+      "table": "files",
+      "columns": ["Component"],
       "icon": "pencil"
     }
   },
@@ -35,55 +35,45 @@
         "display_name": "Year"
       },
       {
-        "name": "tumorType",
-        "display_name": "TumorType",
-        "recode": {
-          "top_values": 5,
-          "na_replace": "Missing",
-          "default_replace": "Other"
-        }
+        "name": "type",
+        "display_name": "File Type",
+        "recode":  {"na_replace": "Missing"}
       },
       {
-        "name": "consortium",
-        "display_name": "Consortium",
-        "recode": {"na_replace": "Not Applicable"}
-      },
-      {
-        "name": "accessType",
-        "display_name": "Access Type",
-        "recode": {"na_replace": "Not Annotated"}
+        "name": "benefactorId",
+        "display_name": "Benefactor",
+        "recode": {"na_replace": "Missing"}
       }
     ],
     "plot": {
-      "x": "Consortium",
-      "fill": "Access Type",
-      "facet": "TumorType"
+      "x": "Benefactor",
+      "fill": "File Type",
+      "facet": "Year"
     },
     "tooltips": [ "count", "fill"]
   },
   "resources_generated": {
     "table": "files",
     "empty_table_message": "The investigator/investigators has/have not uploaded any files yet. Please check back later.",
-    "unlist_columns": ["theme"],
-    "drop_na": true,
     "columns": [
       {
         "name": "year",
         "display_name": "Year"
       },
       {
-        "name": "grantName",
-        "display_name": "Grant Name",
-        "recode": {"na_replace": "Not Applicable"}
+        "name": "fileFormat",
+        "display_name": "File Format",
+        "recode": {"na_replace": "Missing"}
       },
       {
-        "name": "theme",
-        "display_name": "Theme"
+        "name": "Component",
+        "display_name": "Component",
+        "recode": {"na_replace": "Missing"}
       }
     ],
     "plot": {
-      "x": "Theme",
-      "fill": "Grant Name",
+      "x": "File Format",
+      "fill": "Component",
       "facet": "Year"
     },
     "tooltips": ["count", "fill"]

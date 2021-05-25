@@ -24,16 +24,6 @@ app_ui <- function() {
         projectlive.modules::summary_snapshot_module_ui("summary_snapshot_ui_1"),
         icon = shiny::icon("chart-area")
       ),
-      shiny::tabPanel(
-        "Publications",
-        projectlive.modules::publication_status_module_ui("publication_status_ui_1"),
-        icon = shiny::icon("chart-area")
-      ),
-      shiny::tabPanel(
-        "Studies",
-        projectlive.modules::study_summary_module_ui("study_summary_ui_1"),
-        icon = shiny::icon("chart-area")
-      ),
       collapsible = TRUE,	inverse = TRUE,
       windowTitle = "projectLive")
   )
